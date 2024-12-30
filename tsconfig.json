@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+      "target": "es6",
+      "module": "commonjs",
+      "typeRoots": ["./types", "./node_modules/@types"],
+      "strict": true
+    },
+    "include": [
+      "cypress/**/*.ts",
+      "types/**/*.d.ts"
+    ]
+  }
+  
