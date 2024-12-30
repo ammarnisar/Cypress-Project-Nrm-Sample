@@ -375,6 +375,7 @@ describe('My First test', function () {
 
             // Log the extracted names from the CSV
             console.log('Extracted Names from CSV:', csvNames);
+            
 
             // Compare CSV data with front-end texts
             const matches = [];
