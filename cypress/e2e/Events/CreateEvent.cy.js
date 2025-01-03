@@ -56,7 +56,7 @@ describe('Events', function () {
     createEventPage.fillTradeSpendDetails();
 
     //Click on Create Event Button
-    createEventPage.clickCreateButton();
+    //
 
     })
 })

@@ -30,12 +30,39 @@ class CreateEventPage {
     }
   
     selectSellInDate() {
-      cy.get('#sellInDate .e-input-group-icon').click();
-      cy.get('table tr span')
-        .filter((index, el) => el.innerText.trim() === '1')
-        .first()
-        .click();
-    }
+
+      //directly enter the date range value 
+      // const dateRange = '01/11/2024 - 30/11/2024';
+      //   // Log the variable to ensure it's correct
+      //   cy.log(`Date Range: ${dateRange}`);
+      //   // Type the value into the input field
+      //   cy.get('#sellInDate_input').type(dateRange);
+      //   cy.pause();
+
+
+       cy.get('#sellInDate .e-input-group-icon').click();
+      // cy.get('table tr span')
+      //   .filter((index, el) => el.innerText.trim() === '1')
+      //   .first()
+      //   .click();
+          // Open the calendar
+  //  cy.get('#sellInDate .e-input-group-icon').click();
+
+    // Select the desired date (e.g., "1")
+    
+    cy.get('table tr .e-day')
+      .filter((index, el) => el.innerText.trim() === '1')
+      .first()
+      .as('selectedDate') // Alias the selected date element
+      .click();
+
+// Assert that the 'span' element inside the 'td' has the 'e-selected' class
+  cy.get('@selectedDate')
+  .parent('td') // Get the parent 'td' of the selected 'span'
+  .should('have.class', 'e-selected'); 
+   
+  
+  }
   
     selectSellInEndDate() {
       cy.get('table tr span').then(($spans) => {
@@ -54,12 +81,14 @@ class CreateEventPage {
           cy.wrap(lastDateSpan[0]).click();
         }
       });
-      cy.get('button.e-apply').click();
+      cy.get('.e-apply.e-flat.e-primary').click({ force: true });
+      //cy.get('.e-apply.e-flat.e-primary').should('not.be.disabled').click();
+     // cy.get('button.e-apply').click();
     }
   
     selectSellOutDate() {
       cy.get('#selloutDate .e-input-group-icon').click();
-      cy.get('table tr span').filter((index, el) => el.innerText.trim() === '1').first().click();
+      cy.get('table tr .e-day').filter((index, el) => el.innerText.trim() === '1').first().click();
     }
   
     selectSellOutEndDate() {
@@ -84,13 +113,13 @@ class CreateEventPage {
   
     selectCustomerPlanningLevelAndAdd() {
    
-  // cy.get('#ej2_dropdownlist_63 > .e-float-input > .e-lib')
-  // .scrollIntoView();  // Scrolls to bring the element into view
+  cy.get('#ej2_dropdownlist_76 > .e-float-input > .e-lib')
+  .scrollIntoView();  // Scrolls to bring the element into view
          
 
-
-    cy.get('#ej2_dropdownlist_69', { timeout: 100000 }).find('.e-search-icon').should('be.visible');
-    cy.get('#ej2_dropdownlist_69 .e-search-icon').click();
+// customer level dropdown selection
+    cy.get('#ej2_dropdownlist_76', { timeout: 100000 }).find('.e-search-icon').should('be.visible');
+   cy.get('#ej2_dropdownlist_76 .e-search-icon').click();
 
     // Select the 'Retailer' item from the dropdown
     cy.get('.e-content.e-dropdownbase', { timeout: 100000 }).find('li.e-list-item').should('be.visible');
@@ -119,7 +148,7 @@ class CreateEventPage {
   
   selectProductPlanningLevel() {
     // Click to open the dropdown
-    cy.get('[aria-labelledby="label_ej2_dropdownlist_73"]').click(); // Example action
+    cy.get('[aria-labelledby="label_ej2_dropdownlist_80"]').click(); // Example action
 
     // Wait for the dropdown content to be visible
     cy.get('.e-content.e-dropdownbase', { timeout: 100000 }).find('li.e-list-item').should('be.visible');

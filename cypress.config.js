@@ -9,8 +9,8 @@ module.exports = defineConfig({
   //   url: 'https://mdlz-uat.nrminsight.io/auth',
   // },
   video: true,
-  defaultCommandTimeout:1000000,  
-  pageLoadTimeout: 1000000, 
+  defaultCommandTimeout:10000,  
+  pageLoadTimeout: 100000, 
   reporter: 'cypress-mochawesome-reporter',
   e2e: {
 

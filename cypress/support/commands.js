@@ -129,7 +129,7 @@ Cypress.Commands.add('logintesting', (username, password) => {
     cy.visit('https://test.nrminsight.io');
     //  cy.wait(9000)
     cy.get('input[type="email"]').type('ammar.nisar@ebitlogix.com')
-    cy.get('input[type="password"]').type('Nrm@12345678999')
+    cy.get('input[type="password"]').type('Nrm@123456789999')
     cy.contains('Login').click()
 
 });
@@ -141,7 +141,7 @@ Cypress.Commands.add('Loginwithsession', () => {
             cy.visit('/'); // Replace with the correct login URL if needed
 
             cy.get('input[type="email"]').type('ammar.nisar@ebitlogix.com');
-            cy.get('input[type="password"]').type('Nrm@12345678999');
+            cy.get('input[type="password"]').type('Nrm@123456789999');
             cy.contains('Login').click();
             cy.log('before');
             cy.get('h5').contains("Let's choose your model!", { timeout: 10000 }).should('be.visible')
