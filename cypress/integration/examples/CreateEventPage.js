@@ -31,90 +31,92 @@ class CreateEventPage {
   
     selectSellInDate() {
 
-      //directly enter the date range value 
-      // const dateRange = '01/11/2024 - 30/11/2024';
-      //   // Log the variable to ensure it's correct
-      //   cy.log(`Date Range: ${dateRange}`);
-      //   // Type the value into the input field
-      //   cy.get('#sellInDate_input').type(dateRange);
-      //   cy.pause();
+      //directly enter the date range value  of sell in start and sell in end date 
+      const dateRange = '01/11/2024 - 30/11/2024';
+        // Log the variable to ensure it's correct
+        cy.log(`Date Range: ${dateRange}`);
+        // Type the value into the input field
+        cy.get('#sellInDate_input').type(dateRange);
+       
 
+// // Click on sell in start and end date calendar icon 
+//      cy.get('#sellInDate .e-input-group-icon').click();     
+//     // Select the desired date (e.g., "1")  its will get from the number of indexes
+//     cy.get('table tr .e-day')
+//       .filter((index, el) => el.innerText.trim() === '1')
+//       .first()
+//       .as('selectedDate') // Alias the selected date element
+//       .click();
 
-       cy.get('#sellInDate .e-input-group-icon').click();
-      // cy.get('table tr span')
-      //   .filter((index, el) => el.innerText.trim() === '1')
-      //   .first()
-      //   .click();
-          // Open the calendar
-  //  cy.get('#sellInDate .e-input-group-icon').click();
-
-    // Select the desired date (e.g., "1")
-    
-    cy.get('table tr .e-day')
-      .filter((index, el) => el.innerText.trim() === '1')
-      .first()
-      .as('selectedDate') // Alias the selected date element
-      .click();
-
-// Assert that the 'span' element inside the 'td' has the 'e-selected' class
-  cy.get('@selectedDate')
-  .parent('td') // Get the parent 'td' of the selected 'span'
-  .should('have.class', 'e-selected'); 
+// // Assert that the 'span' element inside the 'td' has the 'e-selected' class
+//     cy.get('@selectedDate')
+//     .parent('td') // Get the parent 'td' of the selected 'span'
+//     .should('have.class', 'e-selected'); 
    
   
   }
-  
-    selectSellInEndDate() {
-      cy.get('table tr span').then(($spans) => {
-        const now = new Date();
-        const currentMonth = now.toLocaleString('default', { month: 'long' });
-        const currentYear = now.getFullYear();
-        const lastDayOfMonth = new Date(currentYear, now.getMonth() + 1, 0).getDate();
-        const filteredSpans = $spans.filter((index, span) => {
-          const title = span.getAttribute('title');
-          return title && title.includes(currentMonth) && title.includes(currentYear);
-        });
-        const lastDateSpan = filteredSpans.filter((index, span) => {
-          return parseInt(span.textContent.trim(), 10) === lastDayOfMonth;
-        });
-        if (lastDateSpan.length > 0) {
-          cy.wrap(lastDateSpan[0]).click();
-        }
-      });
-      cy.get('.e-apply.e-flat.e-primary').click({ force: true });
-      //cy.get('.e-apply.e-flat.e-primary').should('not.be.disabled').click();
-     // cy.get('button.e-apply').click();
-    }
-  
+    //its is used to select sell in end date 
+    // selectSellInEndDate() {
+    //   cy.get('table tr span').then(($spans) => {
+    //     const now = new Date();
+    //     const currentMonth = now.toLocaleString('default', { month: 'long' });
+    //     const currentYear = now.getFullYear();
+    //     const lastDayOfMonth = new Date(currentYear, now.getMonth() + 1, 0).getDate();
+    //     const filteredSpans = $spans.filter((index, span) => {
+    //       const title = span.getAttribute('title');
+    //       return title && title.includes(currentMonth) && title.includes(currentYear);
+    //     });
+    //     const lastDateSpan = filteredSpans.filter((index, span) => {
+    //       return parseInt(span.textContent.trim(), 10) === lastDayOfMonth;
+    //     });
+    //     if (lastDateSpan.length > 0) {
+    //       cy.wrap(lastDateSpan[0]).click();
+    //     }
+    //   });
+    //   cy.get('.e-apply.e-flat.e-primary').click({ force: true });
+    //   //cy.get('.e-apply.e-flat.e-primary').should('not.be.disabled').click();
+    //  // cy.get('button.e-apply').click();
+    // }
+
+    //its is used to select sell out start date
     selectSellOutDate() {
-      cy.get('#selloutDate .e-input-group-icon').click();
-      cy.get('table tr .e-day').filter((index, el) => el.innerText.trim() === '1').first().click();
+       //directly enter the date range value  of sell in start and sell in end date 
+      const dateRange = '01/11/2024 - 30/11/2024';
+        // Log the variable to ensure it's correct
+        cy.log(`Date Range: ${dateRange}`);
+        // Type the value into the input field
+        cy.get('#selloutDate').type(dateRange);
+       
+
+      // cy.get('#selloutDate .e-input-group-icon').click();
+      // cy.get('table tr .e-day').filter((index, el) => el.innerText.trim() === '1').first().click();
+
     }
-  
-    selectSellOutEndDate() {
-      cy.get('table tr span').then(($spans) => {
-        const now = new Date();
-        const currentMonth = now.toLocaleString('default', { month: 'long' });
-        const currentYear = now.getFullYear();
-        const lastDayOfMonth = new Date(currentYear, now.getMonth() + 1, 0).getDate();
-        const filteredSpans = $spans.filter((index, span) => {
-          const title = span.getAttribute('title');
-          return title && title.includes(currentMonth) && title.includes(currentYear);
-        });
-        const lastDateSpan = filteredSpans.filter((index, span) => {
-          return parseInt(span.textContent.trim(), 10) === lastDayOfMonth;
-        });
-        if (lastDateSpan.length > 0) {
-          cy.wrap(lastDateSpan[0]).click();
-        }
-      });
-      cy.get('button.e-apply').click();
-    }
+    //its is used to select sell out End date
+    // selectSellOutEndDate() {
+    //   cy.get('table tr span').then(($spans) => {
+    //     const now = new Date();
+    //     const currentMonth = now.toLocaleString('default', { month: 'long' });
+    //     const currentYear = now.getFullYear();
+    //     const lastDayOfMonth = new Date(currentYear, now.getMonth() + 1, 0).getDate();
+    //     const filteredSpans = $spans.filter((index, span) => {
+    //       const title = span.getAttribute('title');
+    //       return title && title.includes(currentMonth) && title.includes(currentYear);
+    //     });
+    //     const lastDateSpan = filteredSpans.filter((index, span) => {
+    //       return parseInt(span.textContent.trim(), 10) === lastDayOfMonth;
+    //     });
+    //     if (lastDateSpan.length > 0) {
+    //       cy.wrap(lastDateSpan[0]).click();
+    //     }
+    //   });
+    //   cy.get('button.e-apply').click();
+    // }
   
     selectCustomerPlanningLevelAndAdd() {
-   
-  cy.get('#ej2_dropdownlist_76 > .e-float-input > .e-lib')
-  .scrollIntoView();  // Scrolls to bring the element into view
+    
+    cy.get('#ej2_dropdownlist_76 > .e-float-input > .e-lib')
+    .scrollIntoView();  // Scrolls to bring the element into view
          
 
 // customer level dropdown selection

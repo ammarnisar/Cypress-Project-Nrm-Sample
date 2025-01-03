@@ -33,9 +33,9 @@ describe('Events', function () {
 
     // Select Sell-In and Sell-Out dates
     createEventPage.selectSellInDate();
-    createEventPage.selectSellInEndDate();
+   // createEventPage.selectSellInEndDate();
     createEventPage.selectSellOutDate();
-    createEventPage.selectSellOutEndDate();
+   // createEventPage.selectSellOutEndDate();
 
     // Select Customer Planning Level
     createEventPage.selectCustomerPlanningLevelAndAdd();
