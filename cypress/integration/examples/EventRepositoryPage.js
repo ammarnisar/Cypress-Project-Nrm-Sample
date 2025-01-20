@@ -1,6 +1,7 @@
 class EventRepositoryPage {
     verifyUrlRedirection() {
      // cy.get('.heading4', { timeout: 10000 }).should('be.visible').and('contain.text', 'Event Repository');
+     cy.visit('/eventrepository');
       cy.url({ timeout: 30000 }).should('include', '/eventrepository');
     }
   

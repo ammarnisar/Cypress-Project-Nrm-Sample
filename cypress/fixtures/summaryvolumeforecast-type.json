@@ -1,0 +1,26 @@
+{
+  "row1": {
+    "Column 1": "Base",
+    "Column 2": "247.32"
+  },
+  "row2": {
+    "Column 1": "Promo",
+    "Column 2": "247.32"
+  },
+  "row3": {
+    "Column 1": "Full Price",
+    "Column 2": "0.00"
+  },
+  "row4": {
+    "Column 1": "Total",
+    "Column 2": "247.32"
+  },
+  "row5": {
+    "Column 1": "% Uplift",
+    "Column 2": "100.00"
+  },
+  "row6": {
+    "Column 1": "% Phasing",
+    "Column 2": "100.00"
+  }
+}

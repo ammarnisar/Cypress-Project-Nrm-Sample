@@ -1,7 +1,9 @@
-class CreateEventPage {
+import BasePage from '../examples/POM/BasePage';
+
+class CreateEventPage  {
     fillEventInfoTab() {
       cy.wait(1000);
-      cy.get('input.w100.e-control.e-textbox.e-lib').first().type('UAT SMOKE TEST Event on Malaysia 09-Dec-2024 TIME:8:50 PM PST');
+      cy.get('input.w100.e-control.e-textbox.e-lib').first().type('Creat event for testing B by AM through AT');
       cy.get('form div div div div input[role="combobox"]').eq(0).type('Promo code testing{enter}');
       cy.get('form div div div div input[role="combobox"]').eq(1).click();
       cy.get('.e-content.e-dropdownbase', { timeout: 100000 }).find('li').should('be.visible').and('contain.text', 'Default');
@@ -32,11 +34,11 @@ class CreateEventPage {
     selectSellInDate() {
 
       //directly enter the date range value  of sell in start and sell in end date 
-      const dateRange = '01/11/2024 - 30/11/2024';
+     // const dateRange = '01/11/2024 - 30/11/2024';
         // Log the variable to ensure it's correct
-        cy.log(`Date Range: ${dateRange}`);
+        cy.log(`Date Range: ${BasePage.dateRange}`);
         // Type the value into the input field
-        cy.get('#sellInDate_input').type(dateRange);
+        cy.get('#sellInDate_input').type(BasePage.dateRange);
        
 
 // // Click on sell in start and end date calendar icon 
@@ -81,11 +83,11 @@ class CreateEventPage {
     //its is used to select sell out start date
     selectSellOutDate() {
        //directly enter the date range value  of sell in start and sell in end date 
-      const dateRange = '01/11/2024 - 30/11/2024';
+    //  const dateRange = '01/11/2024 - 30/11/2024';
         // Log the variable to ensure it's correct
-        cy.log(`Date Range: ${dateRange}`);
+        cy.log(`Date Range: ${BasePage.dateRange}`);
         // Type the value into the input field
-        cy.get('#selloutDate').type(dateRange);
+        cy.get('#selloutDate').type(BasePage.dateRange);
        
 
       // cy.get('#selloutDate .e-input-group-icon').click();
@@ -127,6 +129,15 @@ class CreateEventPage {
     cy.get('.e-content.e-dropdownbase', { timeout: 100000 }).find('li.e-list-item').should('be.visible');
     cy.get('li.e-list-item').contains('Retailer').should('be.visible').click();
 
+    // Click on search of customer 
+    cy.get('#search > .e-multiselect > .e-multi-select-wrapper').click();
+    //  cy.get('.e-multiselect #chip_default_61').click();
+    //this class is same in cutomer and product please optimize this 
+      cy.get('.e-input-focus').type(BasePage.Customer1+'{enter}');
+
+    
+      
+    //-----------------------------------------------------------
     // Select the customer and add to the listed environment
     cy.get('.wrapAdditionItem.primary').each(($el, index) => {
       // Skip the first element if it's the "Available" row
@@ -135,6 +146,7 @@ class CreateEventPage {
         cy.wrap($el).find('span.icon.plusO').click();
       }
     });
+    //-----------------------------------------------------------
   }
 
   scrolltowardsproducts() {
@@ -158,6 +170,15 @@ class CreateEventPage {
     // Select 'SKU' from the dropdown list
     cy.get('li.e-list-item').contains('SKU').should('be.visible').click(); // Click on the item
 
+    
+
+    // Click on search for Product input search 
+    cy.get('#ej2_multiselect_82 > .e-multiselect > .e-multi-select-wrapper').click();
+    //  cy.get('.e-multiselect #chip_default_61').click();
+    // this class is same in cutomer and product please optimize this 
+      cy.get('.e-input-focus').type(BasePage.SKU1+'{enter}');
+
+      
     // Interact with each item in the span.mlAuto container
     cy.get('span.mlAuto').each(($el, index) => {
       // Skip the first element if it's the "Available" row
@@ -174,10 +195,10 @@ class CreateEventPage {
     }
   
     fillVolumeDetails() {
-      cy.get('#numerictextbox_18').click().clear().type('23');
-      cy.get('#numerictextbox_19').click().clear().type('23');
-      cy.get('#numerictextbox_20').click().clear().type('23');
-      cy.get('#numerictextbox_21').click().clear().type('23');
+      cy.get('#numerictextbox_18').click().clear().type('100');
+      cy.get('#numerictextbox_19').click().clear().type('100');
+      cy.get('#numerictextbox_20').click().clear().type('100');
+      cy.get('#numerictextbox_21').click().clear().type('100');
     }
   
     fillTradeSpendDetails() {
