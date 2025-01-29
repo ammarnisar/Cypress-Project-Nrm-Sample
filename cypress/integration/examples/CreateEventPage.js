@@ -117,13 +117,15 @@ class CreateEventPage  {
   
     selectCustomerPlanningLevelAndAdd() {
     
-    cy.get('#ej2_dropdownlist_76 > .e-float-input > .e-lib')
-    .scrollIntoView();  // Scrolls to bring the element into view
-         
+     // cy.get('#ej2_dropdownlist_59 > .e-float-input > .e-lib').scrollIntoView();
+     // cy.get('#tab-customers .e-float-input select option').scrollIntoView();
+     cy.contains('Customers Planning Level')
+     .scrollIntoView()
+     .should('be.visible');
 
 // customer level dropdown selection
-    cy.get('#ej2_dropdownlist_76', { timeout: 100000 }).find('.e-search-icon').should('be.visible');
-   cy.get('#ej2_dropdownlist_76 .e-search-icon').click();
+    cy.get('#ej2_dropdownlist_59', { timeout: 100000 }).find('.e-search-icon').should('be.visible');
+   cy.get('#ej2_dropdownlist_59 .e-search-icon').click();
 
     // Select the 'Retailer' item from the dropdown
     cy.get('.e-content.e-dropdownbase', { timeout: 100000 }).find('li.e-list-item').should('be.visible');
@@ -162,7 +164,7 @@ class CreateEventPage  {
   
   selectProductPlanningLevel() {
     // Click to open the dropdown
-    cy.get('[aria-labelledby="label_ej2_dropdownlist_80"]').click(); // Example action
+    cy.get('[aria-labelledby="label_ej2_dropdownlist_63"]').click(); // Example action
 
     // Wait for the dropdown content to be visible
     cy.get('.e-content.e-dropdownbase', { timeout: 100000 }).find('li.e-list-item').should('be.visible');
@@ -173,7 +175,7 @@ class CreateEventPage  {
     
 
     // Click on search for Product input search 
-    cy.get('#ej2_multiselect_82 > .e-multiselect > .e-multi-select-wrapper').click();
+    cy.get('#ej2_multiselect_65 > .e-multiselect > .e-multi-select-wrapper').click();
     //  cy.get('.e-multiselect #chip_default_61').click();
     // this class is same in cutomer and product please optimize this 
       cy.get('.e-input-focus').type(BasePage.SKU1+'{enter}');
@@ -190,19 +192,34 @@ class CreateEventPage  {
   }
   
     selectVolumeFinanceDetails() {
-      cy.get('#ej2_dropdownlist_26 .e-search-icon').click();
+      //#tab-volfinance div:nth-child(3) >div:nth-child(1) .e-input-group-icon// this one is getting case only
+      cy.get('#ej2_dropdownlist_9 .e-search-icon').click(); //
       cy.get('.e-content.e-dropdownbase').find('li').contains('Cases').should('be.visible').click();
+    }
+
+    selectUplifttype(){
+      //#tab-volfinance div:nth-child(3) >div:nth-child(2) > div:nth-child(1) .e-input-group-icon  // using for click on uplift 
     }
   
     fillVolumeDetails() {
-      cy.get('#numerictextbox_18').click().clear().type('100');
-      cy.get('#numerictextbox_19').click().clear().type('100');
-      cy.get('#numerictextbox_20').click().clear().type('100');
-      cy.get('#numerictextbox_21').click().clear().type('100');
+      // Volume sell in //  #tab-volfinance div:nth-child(3) >div:nth-child(2) > div:nth-child(2) input:nth-child(1)
+      cy.get('#numerictextbox_1').click().clear().type('100');
+        // Volume sell out //#tab-volfinance div:nth-child(3) >div:nth-child(2) > div:nth-child(3) input:nth-child(1)
+      cy.get('#numerictextbox_2').click().clear().type('100');
+      // Estate css selector // #tab-volfinance div:nth-child(4) >div:nth-child(1)  input:nth-child(1) 
+      cy.get('#numerictextbox_3').click().clear().type('100');
+      //Sold on deals //#tab-volfinance div:nth-child(4) >div:nth-child(2) input:nth-child(1)
+      cy.get('#numerictextbox_4').click().clear().type('100');
     }
   
+    SelectRetaitdiscount(){
+      //#tab-volfinance div:nth-child(5) > div  > div:nth-child(1) .e-input-group-icon // click on retail data
+
+      //Add RSP discount through click // #tab-volfinance div:nth-child(5) > div  > div:nth-child(2) input:nth-child(1) 
+    }
     fillTradeSpendDetails() {
       cy.get('h6').contains('Trade Spend').scrollIntoView();
+      //div section ol:nth-child(1) li:nth-child(2) div:nth-child(1) span:nth-child(4)
   
       cy.get('div section ol li:nth-child(2) > div:nth-child(1)  span:nth-child(4)').click({ force: true });
       cy.get('#discountLevel2_popup').find('li.e-list-item').first().click();
@@ -219,7 +236,7 @@ class CreateEventPage  {
       cy.get('div section ol li:nth-child(2) > div:nth-child(5)  span:nth-child(4)').click({ force: true });
       cy.get('#basedOn_popup').find('li.e-list-item').first().click();
   
-      cy.get('div section ol li:nth-child(2) > div:nth-child(7)').find('input#numerictextbox_25').clear().type('2'); //previous is input#numerictextbox_8
+      cy.get('div section ol li:nth-child(2) > div:nth-child(7)').find('input#numerictextbox_8').clear().type('2'); //previous is input#numerictextbox_8
       cy.get('div section ol li:nth-child(2) > div:nth-child(8)').find('.icon').click();
     }
 
